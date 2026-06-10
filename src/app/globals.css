@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08090d;
+  --surface: #0f1116;
+  --surface-2: #15181f;
+  --foreground: #f4f4f5;
+  --muted: #9aa1ad;
+  --border: rgba(255, 255, 255, 0.08);
+  --primary: #ff6a1a;
+  --primary-foreground: #0a0a0a;
+  --accent: #29d6e8;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .bg-radial-fade {
+    background: radial-gradient(circle at 50% 0%, rgba(255, 106, 26, 0.18), transparent 60%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-16px) rotate(var(--rot, 0deg));
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
