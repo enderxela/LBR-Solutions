@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Box, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "#services", label: "Services" },
@@ -23,12 +24,15 @@ export default function Header() {
           className="flex items-center gap-2 text-lg font-semibold tracking-tight"
           onClick={() => setOpen(false)}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Box className="h-5 w-5" strokeWidth={2.5} />
-          </span>
-          <span>
-            LBR <span className="text-primary">Solutions</span>
-          </span>
+          <Image
+            src="/logo2.png"
+            alt="LBR Solutions"
+            width={2816}
+            height={1536}
+            className="h-9 w-auto"
+            loading="eager"
+          />
+          <span className="text-primary">Solutions</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
