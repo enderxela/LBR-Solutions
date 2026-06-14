@@ -1,6 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ArrowRight, Cog, Layers, Sparkles } from "lucide-react";
 import { FlyingPrinterIcon, WireframeCubeIcon } from "@/components/HeroIcons";
+
+const Printer3D = dynamic(() => import("@/components/Printer3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center">
+      <FlyingPrinterIcon className="h-12 w-12 animate-pulse text-accent" strokeWidth={1.5} />
+    </div>
+  ),
+});
 
 const STATS = [
   { value: "50+", label: "projets réalisés" },
@@ -72,11 +84,8 @@ export default function Hero() {
             <WireframeCubeIcon className="h-16 w-16 text-primary" strokeWidth={1.5} />
           </div>
 
-          <div
-            className="animate-float absolute right-4 top-24 flex h-32 w-32 rotate-[6deg] items-center justify-center rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40"
-            style={{ "--rot": "6deg", animationDelay: "1.2s" } as React.CSSProperties}
-          >
-            <FlyingPrinterIcon className="h-12 w-12 text-accent" strokeWidth={1.5} />
+          <div className="absolute right-0 top-8 h-60 w-60">
+            <Printer3D />
           </div>
 
           <div
