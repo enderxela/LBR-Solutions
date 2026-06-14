@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Box, Cog, Layers, Printer, Sparkles } from "lucide-react";
+import { ArrowRight, Cog, Layers, Sparkles } from "lucide-react";
+import { FlyingPrinterIcon, WireframeCubeIcon } from "@/components/HeroIcons";
 
 const STATS = [
   { value: "50+", label: "projets réalisés" },
@@ -68,14 +69,14 @@ export default function Hero() {
             className="animate-float absolute left-6 top-4 flex h-40 w-40 rotate-[-8deg] items-center justify-center rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40"
             style={{ "--rot": "-8deg" } as React.CSSProperties}
           >
-            <Box className="h-16 w-16 text-primary" strokeWidth={1.5} />
+            <WireframeCubeIcon className="h-16 w-16 text-primary" strokeWidth={1.5} />
           </div>
 
           <div
             className="animate-float absolute right-4 top-24 flex h-32 w-32 rotate-[6deg] items-center justify-center rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40"
             style={{ "--rot": "6deg", animationDelay: "1.2s" } as React.CSSProperties}
           >
-            <Printer className="h-12 w-12 text-accent" strokeWidth={1.5} />
+            <FlyingPrinterIcon className="h-12 w-12 text-accent" strokeWidth={1.5} />
           </div>
 
           <div
