@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import About from "@/components/About";
+import Estimator from "@/components/Estimator";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <Portfolio />
         <Process />
         <About />
+        <Estimator />
         <Contact />
       </main>
       <Footer />

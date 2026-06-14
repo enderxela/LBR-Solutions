@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 
@@ -45,6 +45,20 @@ type Status = "idle" | "sending" | "success" | "error";
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
+
+  useEffect(() => {
+    function handleQuoteRequest(event: Event) {
+      const summary = (event as CustomEvent<string>).detail;
+      const messageField = formRef.current?.elements.namedItem("message");
+      if (messageField instanceof HTMLTextAreaElement) {
+        messageField.value = summary;
+      }
+    }
+
+    window.addEventListener("lbr-quote-request", handleQuoteRequest);
+    return () =>
+      window.removeEventListener("lbr-quote-request", handleQuoteRequest);
+  }, []);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
