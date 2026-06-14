@@ -48,16 +48,3 @@ body {
     text-wrap: balance;
   }
 }
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(var(--rot, 0deg));
-  }
-  50% {
-    transform: translateY(-16px) rotate(var(--rot, 0deg));
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}

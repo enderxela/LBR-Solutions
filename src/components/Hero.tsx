@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { ArrowRight, Cog, Layers, Sparkles } from "lucide-react";
-import { FlyingPrinterIcon, WireframeCubeIcon } from "@/components/HeroIcons";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { FlyingPrinterIcon } from "@/components/HeroIcons";
 
 const Printer3D = dynamic(() => import("@/components/Printer3D"), {
   ssr: false,
@@ -76,33 +76,11 @@ export default function Hero() {
           </dl>
         </div>
 
-        <div className="relative hidden h-[420px] md:block">
-          <div
-            className="animate-float absolute left-6 top-4 flex h-40 w-40 rotate-[-8deg] items-center justify-center rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40"
-            style={{ "--rot": "-8deg" } as React.CSSProperties}
-          >
-            <WireframeCubeIcon className="h-16 w-16 text-primary" strokeWidth={1.5} />
-          </div>
-
-          <div className="absolute right-0 top-8 h-60 w-60">
+        <div className="relative hidden h-[420px] items-center justify-center md:flex">
+          <div className="absolute inset-0 -z-10 m-auto h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+          <div className="h-[420px] w-[420px]">
             <Printer3D />
           </div>
-
-          <div
-            className="animate-float absolute bottom-16 left-20 flex h-36 w-36 rotate-[4deg] items-center justify-center rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40"
-            style={{ "--rot": "4deg", animationDelay: "0.6s" } as React.CSSProperties}
-          >
-            <Layers className="h-14 w-14 text-foreground" strokeWidth={1.5} />
-          </div>
-
-          <div
-            className="animate-float absolute bottom-4 right-12 flex h-28 w-28 rotate-[-5deg] items-center justify-center rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40"
-            style={{ "--rot": "-5deg", animationDelay: "1.8s" } as React.CSSProperties}
-          >
-            <Cog className="h-10 w-10 text-primary" strokeWidth={1.5} />
-          </div>
-
-          <div className="absolute inset-0 -z-10 m-auto h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
         </div>
       </div>
     </section>

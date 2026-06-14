@@ -29,31 +29,3 @@ export function FlyingPrinterIcon({
     </svg>
   );
 }
-
-export function WireframeCubeIcon({
-  strokeWidth = 2,
-  ...props
-}: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M12 3 L20 7.5 L12 12 L4 7.5 Z" />
-      <path d="M4 7.5 V16.5 L12 21 L20 16.5 V7.5" />
-      <line x1="12" y1="12" x2="12" y2="21" />
-      <circle cx="12" cy="3" r="0.8" fill="currentColor" stroke="none" />
-      <circle cx="20" cy="7.5" r="0.8" fill="currentColor" stroke="none" />
-      <circle cx="4" cy="7.5" r="0.8" fill="currentColor" stroke="none" />
-      <circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none" />
-      <circle cx="20" cy="16.5" r="0.8" fill="currentColor" stroke="none" />
-      <circle cx="4" cy="16.5" r="0.8" fill="currentColor" stroke="none" />
-      <circle cx="12" cy="21" r="0.8" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
