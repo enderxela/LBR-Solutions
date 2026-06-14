@@ -4,16 +4,15 @@ import { useMemo, useState } from "react";
 import { Send } from "lucide-react";
 
 const MATERIALS = [
-  { value: "PLA", label: "PLA", pricePerGram: 0.08 },
-  { value: "PETG", label: "PETG", pricePerGram: 0.10 },
-  { value: "ABS", label: "ABS", pricePerGram: 0.12 },
-  { value: "Nylon", label: "Nylon", pricePerGram: 0.15 },
+  { value: "PLA", label: "PLA", pricePerGram: 0.012 },
+  { value: "PETG", label: "PETG", pricePerGram: 0.015 },
+  { value: "ABS", label: "ABS", pricePerGram: 0.018 },
+  { value: "Nylon", label: "Nylon", pricePerGram: 0.0225 },
 ];
 
 // Tarifs indicatifs à ajuster selon les coûts réels de LBR Solutions.
-const HOURLY_RATE = 4; // €/h de temps machine
+const HOURLY_RATE = 1.5; // €/h de temps machine
 const GRAMS_PER_HOUR = 15; // conversion poids <-> temps quand une seule valeur est connue
-const MINIMUM_FEE = 5; // € minimum par pièce
 const MARGIN = 0.15; // marge d'incertitude affichée en fourchette
 
 const currencyFormatter = new Intl.NumberFormat("fr-FR", {
@@ -40,10 +39,7 @@ export default function Estimator() {
     const pricePerGram =
       MATERIALS.find((m) => m.value === material)?.pricePerGram ?? 0;
 
-    const unitCost = Math.max(
-      resolvedWeight * pricePerGram + resolvedHours * HOURLY_RATE,
-      MINIMUM_FEE
-    );
+    const unitCost = resolvedWeight * pricePerGram + resolvedHours * HOURLY_RATE;
     const total = unitCost * quantity;
 
     return {
