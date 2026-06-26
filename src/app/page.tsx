@@ -5,6 +5,7 @@ import WebDev from "@/components/WebDev";
 import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import About from "@/components/About";
+import Reviews from "@/components/Reviews";
 import Estimator from "@/components/Estimator";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
         <Portfolio />
         <Process />
         <About />
+        <Reviews />
         <Estimator />
         <Contact />
       </main>
