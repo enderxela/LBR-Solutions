@@ -7,7 +7,7 @@ import ProjectGallery from "@/components/ProjectGallery";
 const PROJECTS = [
   { slug: "echelle", title: "Échelle" },
   { slug: "appareil-photo", title: "Appareil photo" },
-  { slug: "jeu", title: "Jeu" },
+  { slug: "jeu", title: "Jeux" },
   { slug: "moulure", title: "Moulure" },
   { slug: "tampon", title: "Tampon" },
 ];
@@ -43,7 +43,7 @@ export default function Portfolio() {
               Réalisations
             </span>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-              Projets réalisés
+              Quelques-unes de nos réalisations
             </h2>
             <p className="mt-4 text-balance text-muted">
               Un aperçu en photos des pièces conçues et imprimées par notre
