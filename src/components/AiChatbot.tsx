@@ -103,21 +103,22 @@ export default function AiChatbot() {
 
         {/* Call to action */}
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <Link
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-          >
-            Discuter de mon projet
-          </Link>
           <a
             href="https://web-blush-sigma-78.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/40"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/30 transition-transform hover:scale-105"
           >
-            Tester le chatbot
-            <ExternalLink className="h-4 w-4" strokeWidth={1.75} />
+            <Bot className="h-5 w-5" strokeWidth={1.75} />
+            Tester le chatbot en direct
+            <ExternalLink className="h-5 w-5" strokeWidth={1.75} />
           </a>
+          <Link
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/40"
+          >
+            Discuter de mon projet
+          </Link>
           <p className="text-sm text-muted">
             Étude de faisabilité gratuite · Réponse sous 24 h
           </p>
