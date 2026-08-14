@@ -64,6 +64,11 @@ export default function Contact() {
     event.preventDefault();
     if (!formRef.current) return;
 
+    const honeypot = formRef.current.elements.namedItem("website");
+    if (honeypot instanceof HTMLInputElement && honeypot.value !== "") {
+      return;
+    }
+
     setStatus("sending");
 
     emailjs
@@ -136,6 +141,15 @@ export default function Contact() {
                 className="space-y-5 rounded-2xl border border-border bg-surface p-6 sm:p-8"
               >
                 <input type="hidden" name="to_email" value={CONTACT_EMAIL} />
+
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
+                />
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
