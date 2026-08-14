@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { Bot, MessageSquare, ShieldCheck, Database, Clock, Mic } from "lucide-react";
+import { Bot, MessageSquare, ShieldCheck, Database, Clock, Mic, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import WebGallery from "@/components/WebGallery";
 
@@ -109,6 +109,15 @@ export default function AiChatbot() {
           >
             Discuter de mon projet
           </Link>
+          <a
+            href="https://web-blush-sigma-78.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/40"
+          >
+            Tester le chatbot
+            <ExternalLink className="h-4 w-4" strokeWidth={1.75} />
+          </a>
           <p className="text-sm text-muted">
             Étude de faisabilité gratuite · Réponse sous 24 h
           </p>
