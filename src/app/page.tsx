@@ -1,13 +1,11 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import WebDev from "@/components/WebDev";
-import AiChatbot from "@/components/AiChatbot";
 import Portfolio from "@/components/Portfolio";
-import Process from "@/components/Process";
-import About from "@/components/About";
-import Reviews from "@/components/Reviews";
+import FlagshipCase from "@/components/FlagshipCase";
+import Services from "@/components/Services";
 import Estimator from "@/components/Estimator";
+import About from "@/components/About";
+import WebDev from "@/components/WebDev";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -17,14 +15,12 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <Services />
         <Portfolio />
-        <Process />
+        <FlagshipCase />
+        <Services />
         <Estimator />
         <About />
-        <Reviews />
         <WebDev />
-        <AiChatbot />
         <Contact />
       </main>
       <Footer />

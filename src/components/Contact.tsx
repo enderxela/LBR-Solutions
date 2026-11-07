@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
+import Reviews from "@/components/Reviews";
 
 const EMAILJS_SERVICE_ID = "service_6hhufko";
 const EMAILJS_TEMPLATE_ID = "template_ng20a3d";
@@ -84,17 +85,17 @@ export default function Contact() {
       });
   }
 
+  const fieldClass =
+    "mt-2 w-full rounded-[var(--radius-well)] border border-[var(--color-muted)] bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]";
+
   return (
-    <section id="contact" className="py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Contact
-          </span>
-          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-            Parlons de votre projet
-          </h2>
-          <p className="mt-4 text-balance text-muted">
+    <section id="contact" className="border-t border-[var(--color-rule)] py-28 md:py-36">
+      <div className="container">
+        <Reviews />
+
+        <div className="max-w-[52ch]">
+          <h2 className="font-display text-section text-ink">Parlons de votre projet</h2>
+          <p className="lead mt-4 text-ink-2">
             Décrivez-nous votre besoin, joignez vos plans ou références si
             vous en avez, et nous reviendrons vers vous avec une estimation
             sous 24h.
@@ -106,14 +107,10 @@ export default function Contact() {
             <ul className="space-y-6">
               {CONTACT_INFO.map((item) => (
                 <li key={item.label} className="flex items-start gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-primary">
-                    <item.icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
+                  <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.75} aria-hidden="true" />
                   <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {item.label}
-                    </p>
-                    <p className="mt-1 text-sm text-muted">{item.value}</p>
+                    <p className="text-sm font-medium text-ink">{item.label}</p>
+                    <p className="mt-1 text-sm text-ink-2">{item.value}</p>
                   </div>
                 </li>
               ))}
@@ -122,23 +119,23 @@ export default function Contact() {
 
           <div className="lg:col-span-3">
             {status === "success" ? (
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-surface p-10 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-primary">
-                  <Send className="h-6 w-6" strokeWidth={1.75} />
+              <div className="flex h-full flex-col items-center justify-center rounded-[var(--radius-card)] bg-paper-2 p-10 text-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-ink">
+                  <Send className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold">
+                <h3 className="mt-4 font-display text-title text-ink">
                   Message envoyé !
                 </h3>
-                <p className="mt-2 max-w-sm text-sm text-muted">
-                  Merci pour votre message. Notre équipe revient vers vous
-                  rapidement pour discuter de votre projet.
+                <p className="mt-2 max-w-sm text-sm text-ink-2">
+                  Merci pour votre message. Je reviens vers vous rapidement
+                  pour discuter de votre projet.
                 </p>
               </div>
             ) : (
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="space-y-5 rounded-2xl border border-border bg-surface p-6 sm:p-8"
+                className="space-y-5 rounded-[var(--radius-card)] bg-paper-2 p-6 sm:p-8"
               >
                 <input type="hidden" name="to_email" value={CONTACT_EMAIL} />
 
@@ -153,10 +150,7 @@ export default function Contact() {
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium text-foreground"
-                    >
+                    <label htmlFor="name" className="text-sm text-ink">
                       Nom complet
                     </label>
                     <input
@@ -165,14 +159,11 @@ export default function Contact() {
                       type="text"
                       required
                       placeholder="Jean Dupont"
-                      className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+                      className={fieldClass}
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium text-foreground"
-                    >
+                    <label htmlFor="email" className="text-sm text-ink">
                       Email
                     </label>
                     <input
@@ -181,23 +172,20 @@ export default function Contact() {
                       type="email"
                       required
                       placeholder="vous@exemple.com"
-                      className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+                      className={fieldClass}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="project-type"
-                    className="text-sm font-medium text-foreground"
-                  >
+                  <label htmlFor="project-type" className="text-sm text-ink">
                     Type de projet
                   </label>
                   <select
                     id="project-type"
                     name="project-type"
                     defaultValue={PROJECT_TYPES[0]}
-                    className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none"
+                    className={fieldClass}
                   >
                     {PROJECT_TYPES.map((type) => (
                       <option key={type} value={type}>
@@ -208,10 +196,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-foreground"
-                  >
+                  <label htmlFor="message" className="text-sm text-ink">
                     Votre projet
                   </label>
                   <textarea
@@ -220,25 +205,21 @@ export default function Contact() {
                     required
                     rows={5}
                     placeholder="Décrivez votre projet : dimensions, matériau souhaité, délais, fichiers existants..."
-                    className="mt-2 w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+                    className={`${fieldClass} resize-none`}
                   />
                 </div>
 
                 {status === "error" && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-[var(--color-error)]">
                     Une erreur est survenue lors de l&apos;envoi. Merci de
                     réessayer ou de nous écrire directement à{" "}
                     {CONTACT_EMAIL}.
                   </p>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-                >
+                <button type="submit" disabled={status === "sending"} className="btn w-full sm:w-auto">
                   {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
-                  <Send className="h-4 w-4" />
+                  <Send className="h-4 w-4" aria-hidden="true" />
                 </button>
               </form>
             )}

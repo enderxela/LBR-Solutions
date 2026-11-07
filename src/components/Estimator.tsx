@@ -70,17 +70,15 @@ export default function Estimator() {
     );
   }
 
+  const fieldClass =
+    "mt-2 w-full rounded-[var(--radius-well)] border border-[var(--color-muted)] bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]";
+
   return (
-    <section id="estimateur" className="border-b border-border py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Estimation
-          </span>
-          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-            Devis instantané
-          </h2>
-          <p className="mt-4 text-balance text-muted">
+    <section id="estimateur" className="border-t border-[var(--color-rule)] py-28 md:py-36">
+      <div className="container">
+        <div className="max-w-[52ch]">
+          <h2 className="font-display text-section text-ink">Devis instantané</h2>
+          <p className="lead mt-4 text-ink-2">
             Vous connaissez déjà le poids ou le temps d&apos;impression
             estimé de votre pièce, indiqué par votre logiciel de découpe
             (slicer) ? Renseignez-le pour obtenir une fourchette de prix
@@ -88,13 +86,10 @@ export default function Estimator() {
           </p>
         </div>
 
-        <div className="mt-14 rounded-2xl border border-border bg-surface p-6 sm:p-8">
+        <div className="mt-14 rounded-[var(--radius-card)] bg-paper-2 p-6 sm:p-8">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <label
-                htmlFor="estimate-weight"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="estimate-weight" className="text-sm text-ink">
                 Poids estimé (g)
               </label>
               <input
@@ -105,15 +100,12 @@ export default function Estimator() {
                 placeholder="ex : 45"
                 value={weight}
                 onChange={(event) => setWeight(event.target.value)}
-                className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+                className={fieldClass}
               />
             </div>
 
             <div>
-              <label
-                htmlFor="estimate-hours"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="estimate-hours" className="text-sm text-ink">
                 Temps d&apos;impression estimé (h)
               </label>
               <input
@@ -124,22 +116,19 @@ export default function Estimator() {
                 placeholder="ex : 3.5"
                 value={hours}
                 onChange={(event) => setHours(event.target.value)}
-                className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+                className={fieldClass}
               />
             </div>
 
             <div>
-              <label
-                htmlFor="estimate-material"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="estimate-material" className="text-sm text-ink">
                 Matériau
               </label>
               <select
                 id="estimate-material"
                 value={material}
                 onChange={(event) => setMaterial(event.target.value)}
-                className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none"
+                className={fieldClass}
               >
                 {MATERIALS.map((item) => (
                   <option key={item.value} value={item.value}>
@@ -150,10 +139,7 @@ export default function Estimator() {
             </div>
 
             <div>
-              <label
-                htmlFor="estimate-quantity"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="estimate-quantity" className="text-sm text-ink">
                 Quantité
               </label>
               <input
@@ -165,7 +151,7 @@ export default function Estimator() {
                 onChange={(event) =>
                   setQuantity(Math.max(1, parseInt(event.target.value, 10) || 1))
                 }
-                className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+                className={fieldClass}
               />
             </div>
           </div>
@@ -177,13 +163,13 @@ export default function Estimator() {
 
           <div className="mt-8">
             {estimate ? (
-              <div className="flex flex-col gap-4 rounded-xl border border-border bg-surface-2 p-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-4 rounded-[var(--radius-well)] bg-paper-3 p-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm text-muted">
                     Estimation pour {quantity} pièce{quantity > 1 ? "s" : ""}
                   </p>
-                  <p className="mt-1 text-2xl font-bold tracking-tight text-foreground">
-                    {currencyFormatter.format(estimate.low)} –{" "}
+                  <p className="num mt-1 font-display text-title text-ink">
+                    de {currencyFormatter.format(estimate.low)} à{" "}
                     {currencyFormatter.format(estimate.high)}
                   </p>
                   <p className="mt-2 text-xs text-muted">
@@ -191,23 +177,16 @@ export default function Estimator() {
                     après étude.
                   </p>
                 </div>
-                <a
-                  href="#contact"
-                  onClick={handleRequestQuote}
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
-                >
+                <a href="#contact" onClick={handleRequestQuote} className="btn shrink-0">
                   Demander ce devis
-                  <Send className="h-4 w-4" />
+                  <Send className="h-4 w-4" aria-hidden="true" />
                 </a>
               </div>
             ) : (
-              <div className="rounded-xl border border-dashed border-border p-6 text-sm text-muted">
+              <div className="rounded-[var(--radius-well)] border border-dashed border-[var(--color-rule)] p-6 text-sm text-ink-2">
                 Vous ne connaissez ni le poids ni le temps d&apos;impression
                 de votre pièce (nouveau projet à modéliser) ?{" "}
-                <a
-                  href="#contact"
-                  className="font-medium text-primary hover:underline"
-                >
+                <a href="#contact" className="font-medium text-accent hover:underline">
                   Décrivez votre besoin via le formulaire de contact
                 </a>
                 , nous réaliserons une étude et vous proposerons un devis sur

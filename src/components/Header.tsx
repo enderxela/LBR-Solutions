@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -20,64 +19,54 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <header className="sticky top-0 z-[var(--z-sticky-nav)] border-b border-[var(--color-rule)] bg-paper-2">
+      <div className="mx-auto flex h-18 max-w-[1440px] items-center justify-between px-6 xl:px-16">
         <Link
           href="#accueil"
-          className="flex items-center gap-2 text-lg font-semibold tracking-tight"
+          className="flex items-baseline gap-1.5 font-display text-xl text-ink"
           onClick={() => setOpen(false)}
         >
-          <Image
-            src="/logo2.png"
-            alt="LBR Solutions"
-            width={2816}
-            height={1536}
-            className="h-9 w-auto"
-            loading="eager"
-          />
-          <span className="text-primary">Solutions</span>
+          <span className="text-accent">LBR</span>
+          <span className="text-[0.95rem] text-muted">Solutions</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+              className="whitespace-nowrap text-sm text-ink-2 transition-colors hover:text-ink"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Link
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-          >
+        <div className="hidden xl:block">
+          <Link href="#contact" className="btn">
             Demander un devis
           </Link>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg border border-border p-2 text-foreground md:hidden"
+          className="inline-flex items-center justify-center rounded-[var(--radius-pill)] border border-[var(--color-rule)] p-2 text-ink xl:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]"
           aria-label="Ouvrir le menu"
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
         </button>
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-background px-6 py-4 md:hidden">
+        <nav className="border-t border-[var(--color-rule)] bg-paper-2 px-6 py-4 xl:hidden">
           <ul className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block text-sm font-medium text-muted transition-colors hover:text-foreground"
+                  className="block text-sm text-ink-2 transition-colors hover:text-ink"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -85,11 +74,7 @@ export default function Header() {
               </li>
             ))}
             <li>
-              <Link
-                href="#contact"
-                className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-                onClick={() => setOpen(false)}
-              >
+              <Link href="#contact" className="btn mt-2 w-full" onClick={() => setOpen(false)}>
                 Demander un devis
               </Link>
             </li>

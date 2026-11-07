@@ -3,37 +3,38 @@ import path from "node:path";
 import { Code2, Layout, Smartphone, Zap, Globe } from "lucide-react";
 import Link from "next/link";
 import WebGallery from "@/components/WebGallery";
+import AiChatbot from "@/components/AiChatbot";
 
 const WEB_SERVICES = [
   {
     icon: Layout,
     title: "Design sur mesure",
     description:
-      "Chaque site est pensé depuis zéro : identité visuelle cohérente, typographie soignée et mise en page qui guide naturellement le regard vers ce qui compte.",
+      "Chaque site est pensé depuis zéro : identité visuelle cohérente, typographie soignée et mise en page qui guide le regard vers ce qui compte.",
   },
   {
     icon: Code2,
     title: "Développement HTML / CSS / JavaScript",
     description:
-      "Code propre, structuré et maintenable. Pas de template générique — chaque ligne est écrite pour correspondre exactement à votre projet.",
+      "Code propre, structuré et maintenable. Pas de template générique — chaque ligne correspond exactement à votre projet.",
   },
   {
     icon: Smartphone,
     title: "100 % responsive",
     description:
-      "Votre site s'adapte parfaitement à tous les écrans, du mobile au grand moniteur, sans compromis sur l'expérience utilisateur.",
+      "Votre site s'adapte parfaitement à tous les écrans, du mobile au grand moniteur.",
   },
   {
     icon: Zap,
     title: "Performance & référencement",
     description:
-      "Temps de chargement optimisés, bonnes pratiques SEO intégrées dès le départ pour que votre site soit visible et agréable à utiliser.",
+      "Temps de chargement optimisés, bonnes pratiques SEO intégrées dès le départ.",
   },
   {
     icon: Globe,
     title: "Mise en ligne & suivi",
     description:
-      "Déploiement sur votre hébergeur ou sur une solution clé en main, nom de domaine inclus si besoin, avec un suivi post-livraison.",
+      "Déploiement sur votre hébergeur ou une solution clé en main, nom de domaine inclus si besoin, avec un suivi post-livraison.",
   },
 ];
 
@@ -64,70 +65,70 @@ export default function WebDev() {
   })).filter((p) => p.images.length > 0);
 
   return (
-    <section id="dev-web" className="border-b border-border py-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="border-t border-[var(--color-rule)] py-28 md:py-36">
+      <div className="container">
+        <h2 className="font-display text-section text-ink">
+          Au-delà de l&apos;impression 3D
+        </h2>
+        <p className="lead mt-4 max-w-[52ch] text-ink-2">
+          Développement web et assistants IA, conçus avec la même rigueur
+          technique.
+        </p>
 
-        {/* En-tête */}
-        <div className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Services développement
-          </span>
-          <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+        <div id="dev-web" className="mt-16">
+          <h3 className="font-display text-title text-ink">
             Votre site web, pensé pour convaincre
-          </h2>
-          <p className="mt-4 text-balance text-muted">
-            En parallèle de nos services d&apos;impression 3D, nous concevons et développons des sites web sur mesure — vitrines, portfolios ou pages produit — en HTML, CSS et JavaScript. Des interfaces claires, rapides et adaptées à votre image, sans abonnement ni surprise.
+          </h3>
+          <p className="mt-3 max-w-[60ch] text-sm leading-relaxed text-ink-2">
+            En parallèle de mes services d&apos;impression 3D, je conçois et
+            développe des sites web sur mesure — vitrines, portfolios ou
+            pages produit — en HTML, CSS et JavaScript. Des interfaces
+            claires, rapides et adaptées à votre image, sans abonnement ni
+            surprise.
           </p>
-        </div>
 
-        {/* Cards services */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {WEB_SERVICES.map((service) => (
-            <div
-              key={service.title}
-              className="group rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/40"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-2 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <service.icon className="h-6 w-6" strokeWidth={1.75} />
-              </div>
-              <h3 className="mt-5 text-lg font-semibold">{service.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Call to action */}
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <Link
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-          >
-            Demander un devis
-          </Link>
-          <p className="text-sm text-muted">
-            Réponse sous 24 h · Tarif fixe, pas d&apos;abonnement
-          </p>
-        </div>
-
-        {/* Galerie des réalisations web */}
-        {projects.length > 0 && (
-          <div className="mt-20">
-            <h3 className="text-xl font-bold tracking-tight">
-              Quelques réalisations
-            </h3>
-            <div className="mt-10 flex flex-col gap-16">
-              {projects.map((project) => (
-                <WebGallery
-                  key={project.slug}
-                  title={project.title}
-                  images={project.images}
+          <div className="mt-10 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            {WEB_SERVICES.map((service) => (
+              <div key={service.title} className="flex gap-3">
+                <service.icon
+                  className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+                  strokeWidth={1.75}
+                  aria-hidden="true"
                 />
-              ))}
-            </div>
+                <div>
+                  <h4 className="text-sm font-medium text-ink">{service.title}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-2">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        )}
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Link href="#contact" className="btn">
+              Demander un devis
+            </Link>
+            <p className="text-sm text-muted">
+              Réponse sous 24 h · Tarif fixe, pas d&apos;abonnement
+            </p>
+          </div>
+
+          {projects.length > 0 && (
+            <div className="mt-16">
+              <h4 className="font-display text-title text-ink">Quelques réalisations</h4>
+              <div className="mt-8 flex flex-col gap-16">
+                {projects.map((project) => (
+                  <WebGallery key={project.slug} title={project.title} images={project.images} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-24 border-t border-[var(--color-rule)] pt-16 md:mt-28">
+          <AiChatbot />
+        </div>
       </div>
     </section>
   );

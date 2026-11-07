@@ -12,6 +12,7 @@ export function FlyingPrinterIcon({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
       {...props}
     >
       <line x1="6" y1="18" x2="6" y2="5" />

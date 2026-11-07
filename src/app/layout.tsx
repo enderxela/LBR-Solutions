@@ -28,7 +28,13 @@ export default function RootLayout({
       lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=boska@500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-paper text-ink">
         {children}
       </body>
     </html>

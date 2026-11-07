@@ -32,9 +32,6 @@ export default function Process() {
     <section id="processus" className="border-b border-border bg-surface py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Notre processus
-          </span>
           <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
             Un déroulement simple et transparent
           </h2>

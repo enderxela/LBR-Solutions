@@ -1,50 +1,82 @@
+/* Hallmark · shape: Bento Grid + Index · genre: atmospheric · theme: Kiln (deal redirect: dark + orange signature, by request · ember colourway) · redesign: full
+ * hero: Corridor · nav: slab · footer: letter close · imagery: photographs · signature: les boutons de monte-charges de l'hôtel Louis Vuitton, le tirage plein cadre après l'index · kiln: ember
+ * axes: dark/high-contrast-serif/warm · posture: full-palette · contrast: pending · fold: pending · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V5 · weakest: E, le cas Louis Vuitton tourne encore sur un emplacement photo en attente des fichiers du client ; le reste est construit sur le contenu réel */
+/* Hallmark · waive 39b · les tuiles 80px sont des vignettes photo cliquables, pas des contrôles texte · l'index des réalisations a besoin d'une image lisible, pas d'un bouton de 44 à 52px */
+/* Hallmark · waive 49b · lien en ligne dans une phrase de l'estimateur, le texte complet nomme le formulaire de contact · un lien de prose s'enroule comme n'importe quel texte autour de lui */
+/* Hallmark · dismissed 49 · le bouton "Tester le chatbot en direct" porte déjà white-space: nowrap via la classe .btn définie plus bas dans ce fichier */
+/* Hallmark · exception (hors gate) · "LBR" en orange dans le logotype, contre le do-not "never orange type" de Kiln · demandé explicitement par le client comme signature de marque, limité au wordmark (nav + footer) */
+/* Hallmark · reworded "Donnez vie à vos idées, couche après couche" to "Des pièces pensées et imprimées sur mesure" · nouveau hero Corridor validé par le client */
+/* Hallmark · reworded "Quelques-unes de nos réalisations" to "Réalisations" · composition Index au lieu d'une grille de sections */
+/* Hallmark · dropped "Ce que disent nos clients" (3 avis fictifs Thomas R./Sophie M./Marc L., figures "2025") · demande explicite du client : jamais d'avis inventé, seul le lien Google Avis réel est gardé */
+/* Hallmark · dropped figures "50+" et "0,05mm" (stats hero non vérifiables) · demande explicite du client : jamais de chiffre inventé */
 @import "tailwindcss";
+@import "./tokens.css";
+@import "./base.css" layer(base);
 
-:root {
-  --background: #08090d;
-  --surface: #0f1116;
-  --surface-2: #15181f;
-  --foreground: #f4f4f5;
-  --muted: #9aa1ad;
-  --border: rgba(255, 255, 255, 0.08);
-  --primary: #ff6a1a;
-  --primary-foreground: #0a0a0a;
-  --accent: #29d6e8;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme static {
+  --font-display: "Boska", var(--font-geist-sans), "Iowan Old Style", Georgia, serif;
+  --font-body: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }
 
 @layer utilities {
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-
-  .bg-radial-fade {
-    background: radial-gradient(circle at 50% 0%, rgba(255, 106, 26, 0.18), transparent 60%);
-  }
-
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    min-height: 50px;
+    padding: 0 var(--space-lg);
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+    font: 500 var(--text-md) / 1 var(--font-body);
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition:
+      background-color var(--dur-short) var(--ease-out),
+      transform var(--dur-micro) var(--ease-out);
+  }
+  .btn:hover {
+    background: color-mix(in oklab, var(--color-accent) 85%, white 15%);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn--quiet {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-rule);
+  }
+  .btn--quiet:hover {
+    background: var(--color-paper-2);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: background-color var(--dur-short) linear;
+    }
   }
 }

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { InstagramIcon, LinkedInIcon } from "./SocialIcons";
 
@@ -27,21 +26,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+    <footer className="border-t border-[var(--color-rule)] py-16">
+      <div className="container">
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
-          <Link
-            href="#accueil"
-            className="flex items-center gap-2 text-lg font-semibold tracking-tight"
-          >
-            <Image
-              src="/logo2.png"
-              alt="LBR Solutions"
-              width={2816}
-              height={1536}
-              className="h-9 w-auto"
-            />
-            <span className="text-primary">Solutions</span>
+          <Link href="#accueil" className="flex items-baseline gap-1.5 font-display text-xl">
+            <span className="text-accent">LBR</span>
+            <span className="text-[0.95rem] text-muted">Solutions</span>
           </Link>
 
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
@@ -49,7 +39,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="text-sm text-ink-2 transition-colors hover:text-ink"
               >
                 {link.label}
               </Link>
@@ -64,7 +54,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-primary/40 hover:text-primary"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-rule)] text-ink-2 transition-colors hover:border-[var(--color-accent)] hover:text-accent"
               >
                 <social.icon className="h-4 w-4" />
               </Link>
@@ -72,8 +62,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} LBR Solutions. Tous droits réservés.</p>
+        <div className="mt-10 flex flex-col gap-2 border-t border-[var(--color-rule)] pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>LBR Solutions, Alexandre Lebrequier, France. {year}.</p>
           <p>Modélisation &amp; impression 3D sur mesure.</p>
         </div>
       </div>
